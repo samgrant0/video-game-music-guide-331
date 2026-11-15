@@ -167,6 +167,39 @@
     ol.cards ul { margin: 4px 0 0; padding-left: 1.2em; }
     ol.cards ul li { margin: 3px 0; }
     ol.cards img { max-width: 100%; border-radius: 6px; margin-top: 8px; }
+    ol.cards h4 { margin: 0 0 4px; font-size: 1rem; }
+    ol.cards ol, ol.cards ul.options { margin: 4px 0 10px; padding-left: 1.2em; }
+
+    /* Examples inside cards: piano-roll pictures and videos */
+    .example-group {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin-top: 16px;
+    }
+    .example-label { font-weight: 600; margin: 12px 0 4px; }
+    ol.cards figure { margin: 8px 0 14px; }
+    ol.cards figure img {
+      display: block;
+      width: 100%;
+      margin: 0;
+      border: 1px solid var(--border);
+    }
+    ol.cards figure .video { margin: 0; }
+
+    /* Before -> after comparison */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 10px;
+      align-items: start;
+      margin: 8px 0 14px;
+    }
+    .compare figure { margin: 0; }
+    .compare .arrow { font-size: 1.4rem; color: var(--muted); align-self: center; }
+    @media (max-width: 560px) {
+      .compare { grid-template-columns: 1fr; }
+      .compare .arrow { transform: rotate(90deg); justify-self: center; }
+    }
 
     .instruments {
       margin-top: 10px;
@@ -317,12 +350,91 @@
 
         <li>
           <h3>Bass Line</h3>
-          <ul>
-            <li>Bass lines are the lower pitch background section that give music its rhythmic feeling. Melodies alone can be nice, but without a bass line they can often feel shallow; especially for slower songs.</li>
-            <li>Making bass lines is much different than making melodies. Bass lines are, by design, repetitive. A bass line will often repeat the same note or pattern from measure to measure while the melody changes. Bass lines should also be kept simple, the job of a bass line is not to be a counter melody, it's meant to support your melody.</li>
-            <li>Basslines can generally be divided into 4 groups:</li>
-            <li>-- PICTURES HERE + CAPTION OF EACH + EXAMPLE --</li>
-          </ul>
+          <p>Bass lines are the lower-pitched background section that gives music its rhythmic feeling. Melodies alone can be nice, but without a bass line, they can often feel shallow, especially for slower songs.</p>
+          <p>Making bass lines is much different than making melodies. Bass lines are, by design, repetitive. A bass line will often repeat the same note or pattern from measure to measure while the melody changes. Bass lines should also be kept simple; the job of a bass line is not to be a counter melody; it's meant to support your melody.</p>
+          <p>Bass lines can generally be divided into 4 groups:</p>
+
+          <div class="example-group">
+            <h4>1. Up/down loop</h4>
+            <p>The notes move up and down in a repeating pattern. This also includes 2 notes being repeated OR repeating the same note multiple times while still following the general pattern. It also includes going up and resetting at the bottom.</p>
+            <figure>
+              <img src="images/bass-updown.png" alt="Piano roll of an up/down loop bass line in D major. The notes climb up, then reset to the bottom and repeat." loading="lazy">
+              <figcaption>Basic example of an up/down loop bass line.</figcaption>
+            </figure>
+            <p class="example-label">Example from a popular game song: Asgore (Undertale)</p>
+            <figure>
+              <img src="images/bass-updown-asgore.png" alt="Piano roll of the Asgore bass line. A low note alternates with a repeated higher note, and the pattern shifts each measure." loading="lazy">
+              <figcaption>The bass line from Asgore.</figcaption>
+            </figure>
+            <figure>
+              <div class="video">
+                <iframe src="https://www.youtube-nocookie.com/embed/42kI2lT0x6U" title="Asgore from Undertale" loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <figcaption>Listen to Asgore. <a href="https://youtu.be/42kI2lT0x6U">Watch on YouTube</a></figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <h4>2. Repeat note</h4>
+            <p>Repeat the same note and only change on certain beats or between measures. Generally, the notes will be fast or in a complex pattern but will only change pitch between measures.</p>
+            <figure>
+              <img src="images/bass-repeat.png" alt="Piano roll of a repeat-note bass line in D major. Each measure repeats a single note, and the pitch only changes at the start of a new measure." loading="lazy">
+              <figcaption>Basic example of a repeat-note bass line.</figcaption>
+            </figure>
+            <p class="example-label">Example from a popular game song: Megalovania (Undertale)</p>
+            <figure>
+              <img src="images/bass-repeat-megalovania.png" alt="Piano roll of the Megalovania bass line. A fast rhythm repeats on one pitch and moves to a new pitch each measure." loading="lazy">
+              <figcaption>The bass line from Megalovania.</figcaption>
+            </figure>
+            <figure>
+              <div class="video">
+                <iframe src="https://www.youtube-nocookie.com/embed/0FCvzsVlXpQ" title="Megalovania from Undertale" loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <figcaption>Listen to Megalovania. <a href="https://youtu.be/0FCvzsVlXpQ">Watch on YouTube</a></figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <h4>3. Complex</h4>
+            <p>Complex bass lines typically switch from one of the first 2 types to the other mid-measure, every measure.</p>
+            <p>They can also be treated as a counter-melody to the main melody. (Basically, have the main melody go fast when the bass line goes slow and vice versa.)</p>
+            <figure>
+              <img src="images/bass-complex.png" alt="Piano roll of a complex bass line that switches between an up/down loop and repeated notes partway through each measure." loading="lazy">
+              <figcaption>Basic example of a complex bass line.</figcaption>
+            </figure>
+            <p class="example-label">Example from a popular game song: The Only Thing I Know For Real (Metal Gear Rising: Revengeance)</p>
+            <figure>
+              <img src="images/bass-complex-only-thing.png" alt="Piano roll of the bass line from The Only Thing I Know For Real." loading="lazy">
+              <figcaption>The bass line from The Only Thing I Know For Real.</figcaption>
+            </figure>
+            <figure>
+              <div class="video">
+                <iframe src="https://www.youtube-nocookie.com/embed/FhHeGZoWl0g" title="The Only Thing I Know For Real from Metal Gear Rising: Revengeance" loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <figcaption>Listen to The Only Thing I Know For Real. <a href="https://youtu.be/FhHeGZoWl0g">Watch on YouTube</a></figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <h4>4. Melody conversion</h4>
+            <p>The melody becomes the bass line. It should be treated like a bass line, not a melody. It will often shift down an octave when the 2nd (overtaking) melody begins.</p>
+            <figure>
+              <img src="images/bass-melody-conversion.png" alt="Piano roll of a melody that drops down to become the bass line." loading="lazy">
+              <figcaption>Basic example of melody conversion.</figcaption>
+            </figure>
+            <p class="example-label">Example from a popular game song: Aria Math (Minecraft)</p>
+            <figure>
+              <img src="images/bass-melody-conversion-aria-math.png" alt="Piano roll of Aria Math, where the original melody moves down into the bass." loading="lazy">
+              <figcaption>The bass line from Aria Math.</figcaption>
+            </figure>
+            <figure>
+              <div class="video">
+                <iframe src="https://www.youtube-nocookie.com/embed/atgjKEgSqSU" title="Aria Math from Minecraft" loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <figcaption>Listen to Aria Math. <a href="https://youtu.be/atgjKEgSqSU">Watch on YouTube</a></figcaption>
+            </figure>
+          </div>
+
           <div class="instruments"><strong>Instrument choices:</strong> Staccato or "plucky" sounding instruments, such as guitars, basses, or pianos</div>
         </li>
 
@@ -339,21 +451,47 @@
 
         <li>
           <h3>Supporting Background Elements</h3>
-          <ul>
-            <li>[What background elements are: pads, harmonies, and rhythm parts that fill out the sound]</li>
-            <li>[Keeping them quieter and simpler than the melody]</li>
-            <li>[Examples: sustained chords, arpeggios, counter-melodies]</li>
+          <p>Background elements are supporting sections that help fill out a song's sound. Unlike bass lines, they generally don't have a rhythm and are sustained throughout a given measure, meaning the note starts at the beginning of the measure and stops at the end. These mainly consist of chords, arpeggios, or matching notes from the melody.</p>
+          <ul class="options">
+            <li><strong>Chords</strong> are exactly what they sound like; instead of individual notes, you will play chords from your melody.</li>
+            <li><strong>Arpeggios</strong> are played using only notes from your key signature's arpeggio.</li>
+            <li><strong>Matching notes</strong> play the same note as your melody at the start of every measure.</li>
           </ul>
+          <p>Background elements shouldn't be too loud or too prominent; when done right, listeners shouldn't even notice they exist unless they're really paying attention.</p>
           <div class="instruments"><strong>Instrument choices:</strong> [e.g. strings, synth pads, rhythm guitar, organ, backing vocals]</div>
         </li>
 
         <li>
           <h3>Extra Flair + Chords</h3>
-          <ul>
-            <li>[Adding richer chords, e.g. 7ths and suspended chords]</li>
-            <li>[Small touches that add interest: fills, runs, ornaments, sound effects]</li>
-            <li>[Knowing when to stop: avoiding clutter]</li>
-          </ul>
+          <p>The last part you will create for your song is the "flair". Flair parts have no real definition or structure; they are basically extra bits you add to spice up your song. Despite their loose definition, flair is extremely important in your songs. It's what really distinguishes good songs from great ones, more than any basic theory could.</p>
+          <p>Examples include super-high notes playing a basic pattern, an extra instrument playing certain parts of the melody to make it sound more intense, or playing full chords during certain parts of your melody instead of just using them as a base. These are some examples that could help inspire you:</p>
+
+          <div class="example-group">
+            <h4>An extra instrument playing the melody</h4>
+            <figure>
+              <img src="images/flair-extra-instrument.png" alt="Piano roll where a second instrument doubles parts of the main melody." loading="lazy">
+              <figcaption>A second instrument joins in on parts of the melody to make it sound more intense.</figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <h4>Chords in the melody</h4>
+            <figure>
+              <img src="images/flair-chords-in-melody.png" alt="Piano roll where some single melody notes are played as full chords." loading="lazy">
+              <figcaption>Some melody notes are played as full chords instead of single notes.</figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <h4>High bonus notes in a basic pattern</h4>
+            <figure>
+              <img src="images/flair-bonus-notes.png" alt="Piano roll with a simple pattern of very high notes above the rest of the song." loading="lazy">
+              <figcaption>Super-high notes play a simple pattern above the rest of the song.</figcaption>
+            </figure>
+          </div>
+
+          <p>Make sure that any flair you add still keeps to the key signature and rhythm. If it doesn't, it can make your song harder to listen to or make it sound like noise pollution. There is no consistent way to add flair to songs; the best way to do it well is to just practice and keep trying new things with every song you make.</p>
+          <p>Flair can also include things like effects and volume changes, but those are quite complicated, so we won't go over them here.</p>
           <div class="instruments"><strong>Instrument choices:</strong> [e.g. bells, brass stabs, guitar licks, piano fills, risers]</div>
         </li>
 
@@ -397,8 +535,44 @@
 
         <li>
           <h3>Pick a bass line for section A</h3>
-          <p>[Choose a bass pattern that fits your key and the feel you want.]</p>
-          <div class="instruments"><strong>Instrument choices:</strong> [Pick your bass instrument]</div>
+          <p>The first part of the song you will make is the bass line. You don't always need to start here, but it can be really helpful for making your melody later.</p>
+          <p>To get started, choose one of these simple bass line types from the earlier examples. (Complex and Melody Conversion are skipped here because they are difficult to use without much experience.)</p>
+
+          <p class="example-label">Up/down: higher intensity, works well with slow melodies</p>
+          <figure>
+            <img src="images/bass-updown.png" alt="Piano roll of an up/down loop bass line in D major." loading="lazy">
+            <figcaption>Up/down bass line in D major. You can add more notes to the pattern to make it calmer.</figcaption>
+          </figure>
+
+          <p class="example-label">Repeat note: works universally, generally best for build-ups and background music</p>
+          <figure>
+            <img src="images/bass-repeat.png" alt="Piano roll of a repeat-note bass line in D major." loading="lazy">
+            <figcaption>Repeat-note bass line in D major.</figcaption>
+          </figure>
+
+          <h4>Changing the key</h4>
+          <p>These bass lines are all in D major; if you chose a different key signature, you will need to transpose them. Doing this is quite simple (for these examples, at least). Take the first note shown, in this case D, and put your key signature's note there instead. Then move every other note so it stays the same distance from your new note. For example, if you chose C major, D would become C and F# would become E.</p>
+          <div class="compare">
+            <figure>
+              <img src="images/bass-updown.png" alt="Up/down bass line in D major, before transposing." loading="lazy">
+              <figcaption>Before: D major</figcaption>
+            </figure>
+            <span class="arrow" aria-hidden="true">→</span>
+            <figure>
+              <img src="images/bass-updown-c-major.png" alt="The same up/down bass line moved down to C major." loading="lazy">
+              <figcaption>After: C major</figcaption>
+            </figure>
+          </div>
+          <p>If you'd like, you can change some of the notes around as well, but make sure to keep the bass line simple and consistent!</p>
+
+          <div class="note tip">
+            <strong>Tip</strong>
+            Make sure that when you create the bass line, you use the correct octave! Bass lines should generally stay within the 2nd and 3rd octaves so they don't overlap with your melody. (The octave is the number shown beside the note names, like the 2 in D2.)
+          </div>
+
+          <p>The last part of your bass line is picking an instrument. Your choice should depend heavily on the type of song you are making.</p>
+          <div class="instruments"><strong>Instrument choices:</strong> Staccato or "plucky" sounding instruments, such as guitars, basses, or pianos. It's best to avoid more legato, or "smooth"-sounding, instruments like strings and brass.</div>
+          <p style="margin-top:10px">That's it for your bass line! All you have to do is make your bass line repeat until this section of the song ends.</p>
         </li>
 
         <li>
@@ -409,13 +583,41 @@
 
         <li>
           <h3>Add background elements to section A</h3>
-          <p>[Layer in supporting parts that fill out the sound without covering the melody.]</p>
+          <p>For your background elements, pick one of the three types: chords, arpeggios, or matching notes.</p>
+          <ul class="options">
+            <li>If you pick <strong>chords</strong>, the easiest way is to reuse the chords you chose for your melody. Play the chord for the whole measure and repeat this for the entire section. If you don't want to play the entire chord, you can also use just 2 notes from it.</li>
+            <li>If you pick <strong>matching notes</strong>, the easiest way is to simply play the first note of the measure for the entire measure. If your song is slower, you can also do half a measure each.</li>
+            <li>If you pick <strong>arpeggios</strong>, you will only ever use notes from your key signature's arpeggio. You should still have one note played for the entire measure.</li>
+          </ul>
+          <p>Once you pick one, you can start adding it to your song. As a general rule of thumb, the background section should sit between your melody and bass line in terms of pitch. Usually, there will be 2 octaves between the bass line and the melody. If there isn't an octave gap, try to keep the background elements around octaves 3 and 4.</p>
           <div class="instruments"><strong>Instrument choices:</strong> [Pick your background instruments]</div>
         </li>
 
         <li>
           <h3>Add flair to section A</h3>
-          <p>[Add a few finishing touches: richer chords, fills, or effects.]</p>
+          <p>For your flair, you should mainly focus on 2 things: chords and "bonus notes".</p>
+          <p><strong>Chords</strong> are just individual notes from your melody turned into chords. This usually works best if done only once per measure, or even only a few times per section. Inverted chords often work best, but if they don't sound right, you can also try keeping the original note in the middle or top of the chord.</p>
+          <p class="example-label">Example of adding chords to a song</p>
+          <div class="compare">
+            <figure>
+              <img src="images/flair-chords-before.png" alt="Piano roll of a melody with single notes only." loading="lazy">
+              <figcaption>Before</figcaption>
+            </figure>
+            <span class="arrow" aria-hidden="true">→</span>
+            <figure>
+              <img src="images/flair-chords-after.png" alt="The same melody with some notes turned into chords." loading="lazy">
+              <figcaption>After</figcaption>
+            </figure>
+          </div>
+
+          <p><strong>Bonus notes</strong> have the volume and sound of the melody but are entirely disconnected from it. These include the super-high notes in a basic pattern mentioned before, or lower notes doing something similar. These notes should generally follow your key signature's arpeggios, but they don't have to. They work best at the start of a particular beat in a measure, such as the first or third beat.</p>
+          <p class="example-label">Example of adding bonus notes to a song</p>
+          <figure>
+            <img src="images/flair-bonus-notes.png" alt="Piano roll with high bonus notes added above the song in a simple pattern." loading="lazy">
+            <figcaption>These notes use a different instrument; the "before" version would simply be the song without them.</figcaption>
+          </figure>
+
+          <p>For your song, try adding both of these throughout. If you can't get them to sound good, don't include them. You don't need to force them into the song if they don't work. Also, don't try to use them everywhere; use them only in certain sections, or even only specific parts of certain sections.</p>
           <div class="instruments"><strong>Instrument choices:</strong> [Pick your flair instruments]</div>
         </li>
 
