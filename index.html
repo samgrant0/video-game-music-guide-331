@@ -122,17 +122,6 @@
       height: 100%;
       border: 0;
     }
-    .video-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-      background: var(--accent-soft);
-      color: var(--muted);
-      border: 2px dashed var(--accent);
-      height: 100%;
-    }
     figcaption { color: var(--muted); font-size: 0.9rem; margin-top: 8px; }
 
     /* Numbered cards (used for lessons and steps) */
@@ -186,6 +175,71 @@
     }
     ol.cards figure .video { margin: 0; }
     ol.cards figure audio { display: block; width: 100%; height: 40px; margin-top: 8px; }
+
+    /* Custom audio player (built by the script at the bottom of the page) */
+    /* No background of its own: uses the page's text color, so it works in light and dark mode */
+    .player {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 8px;
+      padding: 4px 0;
+      background: transparent;
+      color: var(--text);
+    }
+    .player .play {
+      flex: none;
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      border: 1.5px solid var(--text);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+    .player .play svg { width: 11px; height: 11px; }
+    .player .play[aria-label^="Play"] svg { margin-left: 2px; }
+    .player .play:hover { background: var(--border); }
+    .player .play:focus-visible,
+    .player .seek:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+    .player .seek {
+      flex: 1;
+      min-width: 0;
+      height: 3px;
+      margin: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      /* thick line for the played part, thin grey line for the rest */
+      background:
+        linear-gradient(to right, var(--text) var(--pct, 0%), transparent var(--pct, 0%)),
+        linear-gradient(var(--muted), var(--muted)) center / 100% 1px no-repeat;
+      cursor: pointer;
+    }
+    .player .seek::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--text);
+      border: 0;
+    }
+    .player .seek::-moz-range-thumb {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--text);
+      border: 0;
+    }
+    .player .seek::-moz-range-track { background: transparent; }
+    .player .time {
+      flex: none;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
 
     /* Before -> after comparison */
     .compare {
@@ -270,7 +324,7 @@
     <header>
       <p class="eyebrow">ENG 331 · Instructions</p>
       <h1>How to Make Video Game Music</h1>
-      <p class="byline">By Samuel Grant and Eli Krasner</p>
+      <p class="byline">By Samuel Grant, Eli Krazner, and LaBron Thompson</p>
 
       <div class="meta">
         <div><span>Time needed</span><strong>[About 1–2 hours]</strong></div>
@@ -294,31 +348,6 @@
       <p>[Explain what these instructions teach: how a song is put together, piece by piece, and how to write a complete short song of your own.]</p>
       <p>[Explain how the instructions are organized: first you'll learn each part of a song, then you'll use those parts to write your own song in an ABA structure, and finally you'll get tips for future songwriting.]</p>
       <p>[List what the reader needs, for example an instrument, a free music app such as GarageBand or BandLab, or headphones.]</p>
-    </section>
-
-    <!-- ===== VIDEO ===== -->
-    <section>
-      <h2>Video Walkthrough</h2>
-      <figure style="margin:0">
-        <div class="video">
-          <!--
-            TO ADD YOUR VIDEO, delete the placeholder <div> below and use ONE of these:
-
-            Option A, YouTube:
-              <iframe src="https://www.youtube.com/embed/VIDEO_ID"
-                      title="Video walkthrough" allowfullscreen></iframe>
-              (VIDEO_ID is the part after "watch?v=" in the YouTube link)
-
-            Option B, a video file in this same folder:
-              <video controls src="myvideo.mp4"></video>
-          -->
-          <div class="video-placeholder">
-            Your video will go here.<br>
-            
-          </div>
-        </div>
-        <figcaption>[Caption: what the video shows, and roughly how long it is.]</figcaption>
-      </figure>
     </section>
 
     <!-- =========================================================
@@ -440,7 +469,6 @@
             </figure>
           </div>
 
-          <div class="instruments"><strong>Instrument choices:</strong> Staccato or "plucky" sounding instruments, such as guitars, basses, or pianos</div>
         </li>
 
         <li>
@@ -451,7 +479,6 @@
             <li>[Step-wise motion vs. leaps; repetition and variation]</li>
             <li>[Fitting the melody over the bass line]</li>
           </ul>
-          <div class="instruments"><strong>Instrument choices:</strong> [e.g. voice, piano, guitar, lead synth, flute, violin]</div>
         </li>
 
         <li>
@@ -463,7 +490,6 @@
             <li><strong>Matching notes</strong> play the same note as your melody at the start of every measure.</li>
           </ul>
           <p>Background elements shouldn't be too loud or too prominent; when done right, listeners shouldn't even notice they exist unless they're really paying attention.</p>
-          <div class="instruments"><strong>Instrument choices:</strong> [e.g. strings, synth pads, rhythm guitar, organ, backing vocals]</div>
         </li>
 
         <li>
@@ -500,7 +526,6 @@
 
           <p>Make sure that any flair you add still keeps to the key signature and rhythm. If it doesn't, it can make your song harder to listen to or make it sound like noise pollution. There is no consistent way to add flair to songs; the best way to do it well is to just practice and keep trying new things with every song you make.</p>
           <p>Flair can also include things like effects and volume changes, but those are quite complicated, so we won't go over them here.</p>
-          <div class="instruments"><strong>Instrument choices:</strong> [e.g. bells, brass stabs, guitar licks, piano fills, risers]</div>
         </li>
 
         <li>
@@ -697,9 +722,83 @@
     </section>
 
     <footer>
-      Samuel Grant and Eli Krasner · ENG 331 · [Semester Year]
+      Samuel Grant, Eli Krazner, and LaBron Thompson · ENG 331 · [Semester Year]
     </footer>
 
   </main>
+
+  <script>
+    /* Replaces each browser audio player with a custom one that matches the page.
+       If this script doesn't run, the normal browser player is shown instead. */
+    (function () {
+      var ICON_PLAY = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
+      var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>';
+      var players = [];
+
+      function fmt(s) {
+        if (!isFinite(s)) return '0:00';
+        s = Math.floor(s);
+        return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+      }
+
+      document.querySelectorAll('audio[controls]').forEach(function (audio) {
+        var cap = audio.closest('figure') && audio.closest('figure').querySelector('figcaption');
+        var label = cap ? cap.textContent.trim().split('. ')[0].replace(/\.$/, '') : 'audio example';
+
+        var player = document.createElement('div');
+        player.className = 'player';
+        player.innerHTML =
+          '<button type="button" class="play"></button>' +
+          '<input type="range" class="seek" min="0" max="1000" step="1" value="0" aria-label="Position">' +
+          '<span class="time">0:00 / 0:00</span>';
+        var btn = player.querySelector('.play');
+        var seek = player.querySelector('.seek');
+        var time = player.querySelector('.time');
+
+        function setButton(playing) {
+          btn.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+          btn.setAttribute('aria-label', (playing ? 'Pause: ' : 'Play: ') + label);
+        }
+
+        var frame = null;
+        function update() {
+          var d = audio.duration || 0;
+          var pct = d ? (audio.currentTime / d) * 100 : 0;
+          seek.value = Math.round(pct * 10);
+          seek.style.setProperty('--pct', pct + '%');
+          time.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+          seek.setAttribute('aria-valuetext', fmt(audio.currentTime) + ' of ' + fmt(d));
+        }
+        function tick() {
+          update();
+          frame = audio.paused ? null : requestAnimationFrame(tick);
+        }
+
+        btn.addEventListener('click', function () {
+          if (audio.paused) audio.play(); else audio.pause();
+        });
+        seek.addEventListener('input', function () {
+          if (audio.duration) audio.currentTime = (seek.value / 1000) * audio.duration;
+          update();
+        });
+        audio.addEventListener('play', function () {
+          players.forEach(function (other) { if (other !== audio) other.pause(); });
+          setButton(true);
+          if (!frame) tick();
+        });
+        audio.addEventListener('pause', function () { setButton(false); update(); });
+        audio.addEventListener('ended', function () { audio.currentTime = 0; update(); });
+        audio.addEventListener('loadedmetadata', update);
+        audio.addEventListener('durationchange', update);
+        audio.addEventListener('seeked', update);
+
+        setButton(false);
+        audio.controls = false;
+        audio.preload = 'metadata';
+        audio.after(player);
+        players.push(audio);
+      });
+    })();
+  </script>
 </body>
 </html>
