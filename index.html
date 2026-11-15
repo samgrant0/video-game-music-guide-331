@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Make Video Game Music</title>
+  <style>
+    :root {
+      --bg: #fafaf7;
+      --surface: #ffffff;
+      --text: #1f2328;
+      --muted: #5b636d;
+      --accent: #1d5fa8;
+      --accent-soft: #e8f0fa;
+      --border: #dde1e6;
+      --tip-bg: #e9f7ef;
+      --tip-border: #2e8b57;
+      --tag-bg: #f1ecfa;
+      --tag-text: #5b3b9a;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #16181c;
+        --surface: #1e2126;
+        --text: #e6e8eb;
+        --muted: #a0a7b0;
+        --accent: #6ea8ec;
+        --accent-soft: #1f2d3f;
+        --border: #33373e;
+        --tip-bg: #1b3326;
+        --tip-border: #4caf7a;
+        --tag-bg: #2c2440;
+        --tag-text: #c6b2f0;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 16px 80px;
+    }
+
+    header { margin-bottom: 32px; }
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    h1 { font-size: 2.2rem; line-height: 1.2; margin: 0 0 12px; }
+    .byline { color: var(--muted); margin: 0; }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 56px 0 8px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+    }
+    .part-label {
+      display: block;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .section-intro { color: var(--muted); margin: 0 0 20px; }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin: 24px 0 0;
+    }
+    .meta div {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .meta span { display: block; color: var(--muted); font-size: 0.85rem; }
+    .meta strong { font-size: 1.05rem; }
+
+    /* Table of contents */
+    nav.toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 32px;
+    }
+    nav.toc strong { display: block; margin-bottom: 6px; }
+    nav.toc ol { margin: 0; padding-left: 1.3em; }
+    nav.toc li { margin: 2px 0; }
+
+    /* Video */
+    .video {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+    }
+    .video iframe, .video video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      background: var(--accent-soft);
+      color: var(--muted);
+      border: 2px dashed var(--accent);
+      height: 100%;
+    }
+    figcaption { color: var(--muted); font-size: 0.9rem; margin-top: 8px; }
+
+    /* Numbered cards (used for lessons and steps) */
+    ol.cards { list-style: none; counter-reset: card; padding: 0; margin: 0; }
+    ol.cards > li {
+      counter-increment: card;
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px 18px 68px;
+      margin-bottom: 14px;
+    }
+    ol.cards > li::before {
+      content: counter(card);
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    ol.cards.bulleted > li::before { content: "★"; font-size: 0.95rem; }
+    ol.cards h3 { margin: 2px 0 6px; font-size: 1.1rem; }
+    ol.cards p { margin: 0 0 8px; }
+    ol.cards ul { margin: 4px 0 0; padding-left: 1.2em; }
+    ol.cards ul li { margin: 3px 0; }
+    ol.cards img { max-width: 100%; border-radius: 6px; margin-top: 8px; }
+
+    .instruments {
+      margin-top: 10px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.95rem;
+    }
+    .instruments strong { margin-right: 4px; }
+
+    .note {
+      border-left: 4px solid;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 16px 0;
+    }
+    .note.tip { background: var(--tip-bg); border-color: var(--tip-border); }
+    .note strong { display: block; margin-bottom: 2px; }
+
+    /* ABA diagram */
+    .aba {
+      display: flex;
+      gap: 8px;
+      margin: 10px 0 4px;
+      flex-wrap: wrap;
+    }
+    .aba span {
+      flex: 1;
+      min-width: 60px;
+      text-align: center;
+      font-weight: 700;
+      padding: 8px 0;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .aba span.b { background: var(--tag-bg); color: var(--tag-text); }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    a { color: var(--accent); }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.7rem; }
+      ol.cards > li { padding-left: 60px; }
+      ol.cards > li::before { left: 14px; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      .video { display: none; }
+      ol.cards > li { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <!-- ===== TITLE ===== -->
+    <header>
+      <p class="eyebrow">ENG 331 · Instructions</p>
+      <h1>How to Make Video Game Music</h1>
+      <p class="byline">By Samuel Grant and Eli Krasner</p>
+
+      <div class="meta">
+        <div><span>Time needed</span><strong>[About 1–2 hours]</strong></div>
+        <div><span>Difficulty</span><strong>Beginner</strong></div>
+        <div><span>Audience</span><strong>[New songwriters with no theory background]</strong></div>
+      </div>
+
+      <nav class="toc" aria-label="Contents">
+        <strong>Contents</strong>
+        <ol>
+          <li><a href="#learn">Part 1: Learn the Building Blocks</a></li>
+          <li><a href="#create">Part 2: Write Your Own Song</a></li>
+          <li><a href="#beyond">Part 3: Going Further</a></li>
+        </ol>
+      </nav>
+    </header>
+
+    <!-- ===== INTRODUCTION ===== -->
+    <section>
+      <h2>Introduction</h2>
+      <p>[Explain what these instructions teach: how a song is put together, piece by piece, and how to write a complete short song of your own.]</p>
+      <p>[Explain how the instructions are organized: first you'll learn each part of a song, then you'll use those parts to write your own song in an ABA structure, and finally you'll get tips for future songwriting.]</p>
+      <p>[List what the reader needs, for example an instrument, a free music app such as GarageBand or BandLab, or headphones.]</p>
+    </section>
+
+    <!-- ===== VIDEO ===== -->
+    <section>
+      <h2>Video Walkthrough</h2>
+      <figure style="margin:0">
+        <div class="video">
+          <!--
+            TO ADD YOUR VIDEO, delete the placeholder <div> below and use ONE of these:
+
+            Option A, YouTube:
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+                      title="Video walkthrough" allowfullscreen></iframe>
+              (VIDEO_ID is the part after "watch?v=" in the YouTube link)
+
+            Option B, a video file in this same folder:
+              <video controls src="myvideo.mp4"></video>
+          -->
+          <div class="video-placeholder">
+            Your video will go here.<br>
+            
+          </div>
+        </div>
+        <figcaption>[Caption: what the video shows, and roughly how long it is.]</figcaption>
+      </figure>
+    </section>
+
+    <!-- =========================================================
+         PART 1: LEARN THE BUILDING BLOCKS
+         ========================================================= -->
+    <section id="learn">
+      <h2><span class="part-label">Part 1</span>Learn the Building Blocks</h2>
+      <p class="section-intro">Before writing a song, learn each piece that goes into one. Go through these lessons in order, because each one builds on the last.</p>
+
+      <ol class="cards">
+        <li>
+          <h3>Key Signature</h3>
+          <ul>
+            <li>[What a key signature is: the set of notes a song "lives" in]</li>
+            <li>[Major keys vs. minor keys: bright/happy vs. dark/sad]</li>
+            <li>[How to read a key signature (sharps and flats)]</li>
+            <li>[A few beginner-friendly keys, e.g. C major and A minor]</li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>Basic Music Theory</h3>
+          <ul>
+            <li>[Notes, scales, and intervals]</li>
+            <li>[Rhythm basics: beats, measures, and tempo]</li>
+            <li>[Time signatures, e.g. 4/4]</li>
+            <li>[What a chord is and how it is built from a scale]</li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>Bass Line</h3>
+          <ul>
+            <li>[What a bass line does: the low foundation that sets the groove]</li>
+            <li>[Building a bass line from the root notes of chords]</li>
+            <li>[Simple bass rhythm patterns]</li>
+          </ul>
+          <div class="instruments"><strong>Instrument choices:</strong> [e.g. electric bass, upright bass, synth bass, piano left hand]</div>
+        </li>
+
+        <li>
+          <h3>Melody</h3>
+          <ul>
+            <li>[What a melody is: the main tune people remember and hum]</li>
+            <li>[Writing a melody using notes from your key]</li>
+            <li>[Step-wise motion vs. leaps; repetition and variation]</li>
+            <li>[Fitting the melody over the bass line]</li>
+          </ul>
+          <div class="instruments"><strong>Instrument choices:</strong> [e.g. voice, piano, guitar, lead synth, flute, violin]</div>
+        </li>
+
+        <li>
+          <h3>Supporting Background Elements</h3>
+          <ul>
+            <li>[What background elements are: pads, harmonies, and rhythm parts that fill out the sound]</li>
+            <li>[Keeping them quieter and simpler than the melody]</li>
+            <li>[Examples: sustained chords, arpeggios, counter-melodies]</li>
+          </ul>
+          <div class="instruments"><strong>Instrument choices:</strong> [e.g. strings, synth pads, rhythm guitar, organ, backing vocals]</div>
+        </li>
+
+        <li>
+          <h3>Extra Flair + Chords</h3>
+          <ul>
+            <li>[Adding richer chords, e.g. 7ths and suspended chords]</li>
+            <li>[Small touches that add interest: fills, runs, ornaments, sound effects]</li>
+            <li>[Knowing when to stop: avoiding clutter]</li>
+          </ul>
+          <div class="instruments"><strong>Instrument choices:</strong> [e.g. bells, brass stabs, guitar licks, piano fills, risers]</div>
+        </li>
+
+        <li>
+          <h3>Structure</h3>
+          <ul>
+            <li>[What song structure is: the order of a song's sections]</li>
+            <li>[Common structures: verse–chorus, ABA, AABA]</li>
+            <li>[How contrast between sections keeps a listener interested]</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- =========================================================
+         PART 2: WRITE YOUR OWN SONG
+         ========================================================= -->
+    <section id="create">
+      <h2><span class="part-label">Part 2</span>Write Your Own Song</h2>
+      <p class="section-intro">Now use what you learned to write a complete short song. Follow these steps in order.</p>
+
+      <ol class="cards">
+        <li>
+          <h3>Pick a key signature</h3>
+          <p>[Choose a key based on the type of song you want to write.]</p>
+          <ul>
+            <li>[Happy, upbeat song → try a major key such as C or G major]</li>
+            <li>[Sad or mysterious song → try a minor key such as A or E minor]</li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>Plan your structure</h3>
+          <p>[Your song will use an ABA structure: section A, then a contrasting section B, then section A again.]</p>
+          <div class="aba" aria-label="A, then B, then A"><span>A</span><span class="b">B</span><span>A</span></div>
+          <ul>
+            <li>[Decide how long each section is, e.g. 8 measures]</li>
+            <li>[Decide how B will contrast with A, e.g. different mood, rhythm, or chords]</li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>Pick a bass line for section A</h3>
+          <p>[Choose a bass pattern that fits your key and the feel you want.]</p>
+          <div class="instruments"><strong>Instrument choices:</strong> [Pick your bass instrument]</div>
+        </li>
+
+        <li>
+          <h3>Create a melody for section A</h3>
+          <p>[Write a melody over your bass line using notes from your key.]</p>
+          <div class="instruments"><strong>Instrument choices:</strong> [Pick your melody instrument]</div>
+        </li>
+
+        <li>
+          <h3>Add background elements to section A</h3>
+          <p>[Layer in supporting parts that fill out the sound without covering the melody.]</p>
+          <div class="instruments"><strong>Instrument choices:</strong> [Pick your background instruments]</div>
+        </li>
+
+        <li>
+          <h3>Add flair to section A</h3>
+          <p>[Add a few finishing touches: richer chords, fills, or effects.]</p>
+          <div class="instruments"><strong>Instrument choices:</strong> [Pick your flair instruments]</div>
+        </li>
+
+        <li>
+          <h3>Repeat steps 3–6 for section B</h3>
+          <p>[Build section B the same way: bass line, melody, background, then flair.]</p>
+          <div class="note tip">
+            <strong>Tip</strong>
+            [Make B feel different from A, for example by changing chords, rhythm, or instruments, while staying in the same key.]
+          </div>
+        </li>
+
+        <li>
+          <h3>Connect the sections</h3>
+          <p>[Link your sections so the song flows smoothly from start to finish.]</p>
+          <ul>
+            <li>[Connect A → B: e.g. a fill, a build-up, or a chord that leads into B]</li>
+            <li>[Connect B → A: e.g. a pause or a transition that brings back the A melody]</li>
+            <li>[Play the whole song A–B–A from start to finish to check it]</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- =========================================================
+         PART 3: GOING FURTHER
+         ========================================================= -->
+    <section id="beyond">
+      <h2><span class="part-label">Part 3</span>Going Further</h2>
+      <p class="section-intro">You've written your first song. These topics will help you with future songs.</p>
+
+      <ol class="cards bulleted">
+        <li>
+          <h3>Percussion in Music</h3>
+          <ul>
+            <li>[What percussion adds: rhythm, energy, and drive]</li>
+            <li>[Basic drum parts: kick, snare, hi-hat]</li>
+            <li>[Simple beginner beat patterns]</li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>More Complex Use of Volume</h3>
+          <ul>
+            <li>[Dynamics: playing loud vs. soft]</li>
+            <li>[Crescendos and decrescendos to build and release tension]</li>
+            <li>[Balancing instrument volumes in a mix]</li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>Using Inspiration to Write Songs</h3>
+          <ul>
+            <li>[Learning from songs you like: what makes them work?]</li>
+            <li>[Turning feelings, stories, or places into musical ideas]</li>
+            <li>[Keeping an idea notebook or voice memos]</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== CONCLUSION ===== -->
+    <section>
+      <h2>Conclusion</h2>
+      <p>[Wrap up: recap what the reader learned and created, and encourage them to keep writing.]</p>
+    </section>
+
+    <footer>
+      Samuel Grant and Eli Krasner · ENG 331 · [Semester Year]
+    </footer>
+
+  </main>
+</body>
+</html>
