@@ -298,12 +298,6 @@
       color: var(--accent);
     }
     .aba span.b { background: var(--tag-bg); color: var(--tag-text); }
-    .aba span.opt {
-      background: transparent;
-      border: 2px dashed var(--border);
-      color: var(--muted);
-    }
-    .aba small { display: block; font-weight: 400; font-size: 0.75rem; }
     .aba-caption { color: var(--muted); font-size: 0.9rem; margin: 0 0 10px; }
 
     footer {
@@ -354,14 +348,6 @@
       </nav>
     </header>
 
-    <!-- ===== INTRODUCTION ===== -->
-    <section>
-      <h2>Introduction</h2>
-      <p>[Explain what these instructions teach: how a song is put together, piece by piece, and how to write a complete short song of your own.]</p>
-      <p>[Explain how the instructions are organized: first you'll learn each part of a song, then you'll use those parts to write your own song in an ABA structure, and finally you'll get tips for future songwriting.]</p>
-      <p>[List what the reader needs, for example an instrument, a free music app such as GarageBand or BandLab, or headphones.]</p>
-    </section>
-
     <!-- =========================================================
          PART 1: LEARN THE BUILDING BLOCKS
          ========================================================= -->
@@ -398,23 +384,14 @@
           </div>
 
           <div class="example-group">
-            <p>The main difference between major and minor keys is the lowering of the 3rd and the 7th by half a step. For example, a C major triad is C E G, and a C minor triad is C E♭ G, lowering the 3rd by half a step, or flattening it.</p>
-            <p>When talking about scale degrees, it is always relative to the tonic, or the key's scale. So if we are in D major, the 3rd is always F#, the 5th is always A, and the 1 is D.</p>
-            <p>Below are two graphics to help pick a key: the order of sharps and flats (the order in which sharps and flats are added) and the circle of fifths (which keys have which number of sharps and flats).</p>
-            <figure>
-              <img class="on-dark" src="images/key-signature-sharps-flats-order.png" alt="The letters B E A D G C F. An arrow pointing right, labeled Order of flats, runs above them. An arrow pointing left, labeled Order of sharps, runs below them." loading="lazy">
-              <figcaption>The order of sharps and flats.</figcaption>
-            </figure>
-            <p>As you can see, flats are added in BEADGCF order, while sharps are added in reverse order. This is helpful for reading a key signature. If the key signature has 3 sharps (A major or F# minor), you can go through the sharp order: F#, C#, and G#. The same goes for flats.</p>
-            <figure>
-              <img class="diagram" src="images/key-signature-circle-of-fifths.png" alt="The circle of fifths. Major keys run around the outside, with C at the top, sharp keys going clockwise (G, D, A, E, B) and flat keys going counterclockwise (F, B flat, E flat, A flat, D flat). The matching minor keys are on the inside, and each key shows its number of sharps or flats." loading="lazy">
-              <figcaption>The circle of fifths. Major keys are on the outside and minor keys are on the inside, with the number of sharps or flats for each.</figcaption>
-            </figure>
+            <p>The main difference between major and minor keys is the lowering of the 3rd, 6th, and 7th notes by half a step. For example, a C major triad is C E G, and a C minor triad is C E♭ G, lowering the 3rd by half a step, or flattening it.</p>
+            <p>Since three notes get lowered, going from a major key to the minor key with the same starting note basically adds three flats. For example, C major has no sharps or flats, so its notes are C, D, E, F, G, A, B. When you switch to C minor, the 3rd, 6th, and 7th get flattened, so its notes are C, D, E♭, F, G, A♭, B♭.</p>
+            <p>Being in C major or C minor means C is the "home" note of the song; it's the note the song feels like it should start and end on. The difference is which notes surround it. C major uses only the white keys on a piano, which gives it a bright, happy sound, while C minor has E♭, A♭, and B♭, which gives it the sadder, darker sound you heard in the minor example above.</p>
           </div>
 
           <div class="note tip">
             <strong>Tip</strong>
-            When making your first songs, it is strongly advised to pick an "easy key": a key with fewer than 3 sharps or flats. These are C, G, D, B♭, and F, as seen on the circle of fifths.
+            When making your first songs, it is strongly advised to pick an "easy key," so a key with only 1 or 2 sharps or flats, or none at all. You don't need to learn every key yet; in Part 2, we'll give you a few easy ones to pick from.
           </div>
         </li>
 
@@ -580,28 +557,8 @@
 
         <li>
           <h3>Structure</h3>
-          <p>A song's structure is the order its sections play in. Pop songs are built from verses, choruses, and bridges, but game music works differently. A player might stay in one area for a few seconds or for an hour, so the music has to react to what the player does instead of playing straight through from start to finish.</p>
-          <p>Instead of verses and bridges, game tracks are built from five basic parts:</p>
-          <ul class="options">
-            <li><strong>The intro</strong> sets the mood, environment, and tempo. It usually plays only once, when the player enters a new area or triggers an event.</li>
-            <li><strong>The loop</strong> is the most important part of almost every game track. It is the main body of the track, and it repeats for as long as the player stays in that part of the game. The ending of the loop is written so it flows straight back into the beginning without the player noticing a seam. Composers often do this by ending on the dominant chord (the chord built on the 5th note of the key), which naturally pulls back toward the first chord, or by crossfading the end into the start.</li>
-            <li><strong>Transitions</strong> are short connecting phrases that smoothly hand the music off from one game state to another, such as from exploring to fighting.</li>
-            <li><strong>Stingers</strong> are short, sudden musical cues, usually 2 to 5 seconds long, that play over the background music to mark a specific event, such as opening a treasure chest, leveling up, or spotting an enemy.</li>
-            <li><strong>Tags</strong> (also called outros) are short musical endings that play only when the player completes an objective, beats a level, or dies.</li>
-          </ul>
-          <p>Hearing the same loop over and over can wear on players, which is called "loop fatigue." To prevent it, modern game music is fluid and adaptive. This is done with two main structures, managed by audio middleware (tools such as FMOD or Wwise that connect a game's music to what is happening in the game).</p>
-
-          <div class="example-group">
-            <h4>Vertical layering (interactivity through depth)</h4>
-            <p><strong>How it works:</strong> The track keeps one synchronized timeline, but different instrument tracks, called "stems," fade in and out depending on how intense the gameplay is.</p>
-            <p><strong>Example:</strong> Walking in a field plays a quiet acoustic guitar layer → running near enemies fades in a heavy percussion layer → entering battle fades in an aggressive string section.</p>
-          </div>
-
-          <div class="example-group">
-            <h4>Horizontal re-sequencing (interactivity through time)</h4>
-            <p><strong>How it works:</strong> The music is cut into separate blocks, one after another. Based on the player's choices, the game switches to a new block at the end of the next bar or beat.</p>
-            <p><strong>Example:</strong> You are sneaking through a castle (Loop A) → you get caught → at the next bar line, the music instantly shifts to a frantic escape theme (Loop B).</p>
-          </div>
+          <p>A song's structure is the order its sections play in. Most songs you hear on the radio are built from verses, choruses, and bridges, but video game music works differently. A player might stay in one area for a few seconds or for an hour, so instead of playing once from start to finish, game music is made to repeat.</p>
+          <p>Because of this, game songs are mainly built around <strong>the loop</strong>. The loop is the most important part of almost every game song. It's the main body of the song, and it repeats for as long as the player stays in that area. The end of the loop should flow right back into the beginning, so the player doesn't notice where it restarts.</p>
 
           <div class="example-group">
             <h4>Melody structure inside the loop</h4>
@@ -628,18 +585,31 @@
       <ol class="cards">
         <li>
           <h3>Pick a key signature</h3>
-          <p>[Choose a key based on the type of song you want to write.]</p>
+          <p>Pick a key based on the kind of song you want to make. If you want a happy, bright, or adventurous song, pick a major key. If you want a sad, dark, or tense song, pick a minor key.</p>
+          <p>Here are a few easy keys to start with, along with the notes in each one. Any note not listed as a sharp or flat is played normally.</p>
+
+          <h4>Major keys (happy, bright)</h4>
           <ul>
-            <li>[Happy, upbeat song → try a major key such as C or G major]</li>
-            <li>[Sad or mysterious song → try a minor key such as A or E minor]</li>
+            <li><strong>C major:</strong> no sharps or flats (C, D, E, F, G, A, B)</li>
+            <li><strong>G major:</strong> has F# (G, A, B, C, D, E, F#)</li>
+            <li><strong>D major:</strong> has F# and C# (D, E, F#, G, A, B, C#). The bass line examples in step 3 are in this key.</li>
+            <li><strong>F major:</strong> has B♭ (F, G, A, B♭, C, D, E)</li>
           </ul>
+
+          <h4>Minor keys (sad, dark)</h4>
+          <ul>
+            <li><strong>A minor:</strong> no sharps or flats (A, B, C, D, E, F, G)</li>
+            <li><strong>E minor:</strong> has F# (E, F#, G, A, B, C, D)</li>
+            <li><strong>D minor:</strong> has B♭ (D, E, F, G, A, B♭, C)</li>
+          </ul>
+          <p>For example, if you pick G major, every F in your song should be played as F#. If you pick A minor, you only use the white keys on a piano.</p>
         </li>
 
         <li>
           <h3>Plan your structure</h3>
           <p>Your song will use an ABA structure: section A, then a contrasting section B, then section A again. Together, these three sections are your <strong>main loop</strong>, the part of the song that repeats for as long as the player stays in that part of the game.</p>
-          <div class="aba" role="img" aria-label="Optional intro, then the main loop of A, B, A, then an optional outro"><span class="opt">Intro<small>optional</small></span><span>A</span><span class="b">B</span><span>A</span><span class="opt">Outro<small>optional</small></span></div>
-          <p class="aba-caption">A, B, A is the main loop and repeats. The intro and outro are optional and each play only once.</p>
+          <div class="aba" role="img" aria-label="The main loop: A, then B, then A"><span>A</span><span class="b">B</span><span>A</span></div>
+          <p class="aba-caption">A, B, A is the main loop and repeats.</p>
 
           <h4>Make A and B clearly different</h4>
           <p>It's important to clearly distinguish the A section from the B section. If they sound too similar, the loop will feel like one long, repetitive section, and the player will get tired of it faster. B should feel like a change of scenery, while still sounding like it belongs to the same song. You can set B apart by changing things like:</p>
@@ -652,10 +622,7 @@
           <p>Keep both sections in the same key so the song still feels connected. A good starting length is 8 measures for each section, but you can change this to fit your song.</p>
 
           <h4>End the way you started</h4>
-          <p>Because the loop repeats, the end of your song leads straight back into its beginning. Try to end the loop similarly to how you started it, using the same notes, chords, or rhythm. This is a big reason the ABA structure works so well: the second A section brings back the opening material, so the jump from the last measure back to the first sounds natural. That way, your loop sounds like one cohesive piece instead of having a noticeable "seam" every time it restarts. </p>
-
-          <h4>Add an intro or outro (optional)</h4>
-          <p>You can also add an intro before your loop or an outro after it. The intro plays once to set the mood before the loop starts, and the outro plays once to give the song a proper ending, for example when the player beats a level. Neither one is required, so focus on making a strong loop first and add these afterwards if you'd like.</p>
+          <p>Because the loop repeats, the end of your song leads straight back into its beginning. Try to end the loop similarly to how you started it, using the same notes, chords, or rhythm. This is a big reason the ABA structure works so well: the second A section brings back the opening material, so the jump from the last measure back to the first sounds natural. That way, your loop sounds like one cohesive piece instead of having a noticeable "seam" every time it restarts.</p>
         </li>
 
         <li>
