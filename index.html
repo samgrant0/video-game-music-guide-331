@@ -157,6 +157,7 @@
     ol.cards ul li { margin: 3px 0; }
     ol.cards img { max-width: 100%; border-radius: 6px; margin-top: 8px; }
     ol.cards h4 { margin: 0 0 4px; font-size: 1rem; }
+    ol.cards p + h4, ol.cards ul + h4, ol.cards .compare + h4 { margin-top: 18px; }
     ol.cards ol, ol.cards ul.options { margin: 4px 0 10px; padding-left: 1.2em; }
 
     /* Examples inside cards: piano-roll pictures and videos */
@@ -173,6 +174,10 @@
       margin: 0;
       border: 1px solid var(--border);
     }
+    /* For images drawn in white on a transparent background */
+    ol.cards figure img.on-dark { background: #16181c; }
+    /* Square diagrams that shouldn't stretch to full width */
+    ol.cards figure img.diagram { max-width: 380px; }
     ol.cards figure .video { margin: 0; }
     ol.cards figure audio { display: block; width: 100%; height: 40px; margin-top: 8px; }
 
@@ -293,6 +298,13 @@
       color: var(--accent);
     }
     .aba span.b { background: var(--tag-bg); color: var(--tag-text); }
+    .aba span.opt {
+      background: transparent;
+      border: 2px dashed var(--border);
+      color: var(--muted);
+    }
+    .aba small { display: block; font-weight: 400; font-size: 0.75rem; }
+    .aba-caption { color: var(--muted); font-size: 0.9rem; margin: 0 0 10px; }
 
     footer {
       margin-top: 64px;
@@ -327,9 +339,9 @@
       <p class="byline">By Samuel Grant, Eli Krazner, and LaBron Thompson</p>
 
       <div class="meta">
-        <div><span>Time needed</span><strong>[About 1–2 hours]</strong></div>
+        <div><span>Time needed</span><strong>About 1–2 hours</strong></div>
         <div><span>Difficulty</span><strong>Beginner</strong></div>
-        <div><span>Audience</span><strong>[New songwriters with no theory background]</strong></div>
+        <div><span>Audience</span><strong>New songwriters with some theory and music-writing background</strong></div>
       </div>
 
       <nav class="toc" aria-label="Contents">
@@ -360,12 +372,50 @@
       <ol class="cards">
         <li>
           <h3>Key Signature</h3>
-          <ul>
-            <li>[What a key signature is: the set of notes a song "lives" in]</li>
-            <li>[Major keys vs. minor keys: bright/happy vs. dark/sad]</li>
-            <li>[How to read a key signature (sharps and flats)]</li>
-            <li>[A few beginner-friendly keys, e.g. C major and A minor]</li>
-          </ul>
+          <p>A key signature shows how many sharps or flats a song's key has. A song's key tells you which notes should be consistently raised or lowered throughout the song.</p>
+          <p>There are two standard types of keys: major and minor. A major key sounds happy and bright, while a minor key sounds sadder or darker. In video games, major is used to show wonder, safety, and adventure, while minor is used to show danger, sorrow, or epic battles and events.</p>
+
+          <div class="example-group">
+            <h4>Major example: "Overworld Theme" from Super Mario Bros.</h4>
+            <p>A classic example of a major-key gaming track. It uses C major to create a safe, bouncy, bright, fun feeling.</p>
+            <figure>
+              <div class="video">
+                <iframe src="https://www.youtube-nocookie.com/embed/iy3qq7zc4EY" title="Overworld Theme from Super Mario Bros." loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <figcaption>Listen to the Overworld Theme. <a href="https://youtu.be/iy3qq7zc4EY">Watch on YouTube</a></figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <h4>Minor example: "Sealed Vessel" from Hollow Knight</h4>
+            <p>This song from Hollow Knight is a great example of how large orchestral arrangements and minor keys can make a fight feel overly epic and the boss imposing and terrifying.</p>
+            <figure>
+              <div class="video">
+                <iframe src="https://www.youtube-nocookie.com/embed/ze0Rk-m0w2A" title="Sealed Vessel from Hollow Knight" loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <figcaption>Listen to Sealed Vessel. <a href="https://youtu.be/ze0Rk-m0w2A">Watch on YouTube</a></figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <p>The main difference between major and minor keys is the lowering of the 3rd and the 7th by half a step. For example, a C major triad is C E G, and a C minor triad is C E♭ G, lowering the 3rd by half a step, or flattening it.</p>
+            <p>When talking about scale degrees, it is always relative to the tonic, or the key's scale. So if we are in D major, the 3rd is always F#, the 5th is always A, and the 1 is D.</p>
+            <p>Below are two graphics to help pick a key: the order of sharps and flats (the order in which sharps and flats are added) and the circle of fifths (which keys have which number of sharps and flats).</p>
+            <figure>
+              <img class="on-dark" src="images/key-signature-sharps-flats-order.png" alt="The letters B E A D G C F. An arrow pointing right, labeled Order of flats, runs above them. An arrow pointing left, labeled Order of sharps, runs below them." loading="lazy">
+              <figcaption>The order of sharps and flats.</figcaption>
+            </figure>
+            <p>As you can see, flats are added in BEADGCF order, while sharps are added in reverse order. This is helpful for reading a key signature. If the key signature has 3 sharps (A major or F# minor), you can go through the sharp order: F#, C#, and G#. The same goes for flats.</p>
+            <figure>
+              <img class="diagram" src="images/key-signature-circle-of-fifths.png" alt="The circle of fifths. Major keys run around the outside, with C at the top, sharp keys going clockwise (G, D, A, E, B) and flat keys going counterclockwise (F, B flat, E flat, A flat, D flat). The matching minor keys are on the inside, and each key shows its number of sharps or flats." loading="lazy">
+              <figcaption>The circle of fifths. Major keys are on the outside and minor keys are on the inside, with the number of sharps or flats for each.</figcaption>
+            </figure>
+          </div>
+
+          <div class="note tip">
+            <strong>Tip</strong>
+            When making your first songs, it is strongly advised to pick an "easy key": a key with fewer than 3 sharps or flats. These are C, G, D, B♭, and F, as seen on the circle of fifths.
+          </div>
         </li>
 
         <li>
@@ -530,11 +580,40 @@
 
         <li>
           <h3>Structure</h3>
-          <ul>
-            <li>[What song structure is: the order of a song's sections]</li>
-            <li>[Common structures: verse–chorus, ABA, AABA]</li>
-            <li>[How contrast between sections keeps a listener interested]</li>
+          <p>A song's structure is the order its sections play in. Pop songs are built from verses, choruses, and bridges, but game music works differently. A player might stay in one area for a few seconds or for an hour, so the music has to react to what the player does instead of playing straight through from start to finish.</p>
+          <p>Instead of verses and bridges, game tracks are built from five basic parts:</p>
+          <ul class="options">
+            <li><strong>The intro</strong> sets the mood, environment, and tempo. It usually plays only once, when the player enters a new area or triggers an event.</li>
+            <li><strong>The loop</strong> is the most important part of almost every game track. It is the main body of the track, and it repeats for as long as the player stays in that part of the game. The ending of the loop is written so it flows straight back into the beginning without the player noticing a seam. Composers often do this by ending on the dominant chord (the chord built on the 5th note of the key), which naturally pulls back toward the first chord, or by crossfading the end into the start.</li>
+            <li><strong>Transitions</strong> are short connecting phrases that smoothly hand the music off from one game state to another, such as from exploring to fighting.</li>
+            <li><strong>Stingers</strong> are short, sudden musical cues, usually 2 to 5 seconds long, that play over the background music to mark a specific event, such as opening a treasure chest, leveling up, or spotting an enemy.</li>
+            <li><strong>Tags</strong> (also called outros) are short musical endings that play only when the player completes an objective, beats a level, or dies.</li>
           </ul>
+          <p>Hearing the same loop over and over can wear on players, which is called "loop fatigue." To prevent it, modern game music is fluid and adaptive. This is done with two main structures, managed by audio middleware (tools such as FMOD or Wwise that connect a game's music to what is happening in the game).</p>
+
+          <div class="example-group">
+            <h4>Vertical layering (interactivity through depth)</h4>
+            <p><strong>How it works:</strong> The track keeps one synchronized timeline, but different instrument tracks, called "stems," fade in and out depending on how intense the gameplay is.</p>
+            <p><strong>Example:</strong> Walking in a field plays a quiet acoustic guitar layer → running near enemies fades in a heavy percussion layer → entering battle fades in an aggressive string section.</p>
+          </div>
+
+          <div class="example-group">
+            <h4>Horizontal re-sequencing (interactivity through time)</h4>
+            <p><strong>How it works:</strong> The music is cut into separate blocks, one after another. Based on the player's choices, the game switches to a new block at the end of the next bar or beat.</p>
+            <p><strong>Example:</strong> You are sneaking through a castle (Loop A) → you get caught → at the next bar line, the music instantly shifts to a frantic escape theme (Loop B).</p>
+          </div>
+
+          <div class="example-group">
+            <h4>Melody structure inside the loop</h4>
+            <p>When looking only at the melody within a single loop, composers often skip the verse–chorus format and use classical or thematic forms instead:</p>
+            <ul class="options">
+              <li><strong>ABAC form:</strong> A very popular melodic framework. A is the main, memorable theme, B introduces a variation, the track returns to theme A, and C introduces a new melodic ending before looping back to the start.</li>
+              <li><strong>The "sandwich" style:</strong> A structure built with bookends. The very beginning and very end of the loop share identical motifs (short musical ideas) to ground the track, while the middle section contains the more complex musical development.</li>
+              <li><strong>Theme and variations:</strong> A single prominent melody is introduced at the start of a game, then reworked throughout the journey to match a character's growth, for example by switching to a minor key for sad moments or using heavy brass for action.</li>
+            </ul>
+          </div>
+
+          <p style="margin-top:14px">In Part 2, you'll write a loop. It will use an ABA structure inside it: section A, then a contrasting section B, then section A again, so the end leads smoothly back to the start.</p>
         </li>
       </ol>
     </section>
@@ -558,12 +637,25 @@
 
         <li>
           <h3>Plan your structure</h3>
-          <p>[Your song will use an ABA structure: section A, then a contrasting section B, then section A again.]</p>
-          <div class="aba" aria-label="A, then B, then A"><span>A</span><span class="b">B</span><span>A</span></div>
+          <p>Your song will use an ABA structure: section A, then a contrasting section B, then section A again. Together, these three sections are your <strong>main loop</strong>, the part of the song that repeats for as long as the player stays in that part of the game.</p>
+          <div class="aba" role="img" aria-label="Optional intro, then the main loop of A, B, A, then an optional outro"><span class="opt">Intro<small>optional</small></span><span>A</span><span class="b">B</span><span>A</span><span class="opt">Outro<small>optional</small></span></div>
+          <p class="aba-caption">A, B, A is the main loop and repeats. The intro and outro are optional and each play only once.</p>
+
+          <h4>Make A and B clearly different</h4>
+          <p>It's important to clearly distinguish the A section from the B section. If they sound too similar, the loop will feel like one long, repetitive section, and the player will get tired of it faster. B should feel like a change of scenery, while still sounding like it belongs to the same song. You can set B apart by changing things like:</p>
           <ul>
-            <li>[Decide how long each section is, e.g. 8 measures]</li>
-            <li>[Decide how B will contrast with A, e.g. different mood, rhythm, or chords]</li>
+            <li>the mood, for example a calmer or more intense feel</li>
+            <li>the rhythm of the melody or bass line</li>
+            <li>the chords you use</li>
+            <li>the instruments, or how high or low the melody sits</li>
           </ul>
+          <p>Keep both sections in the same key so the song still feels connected. A good starting length is 8 measures for each section, but you can change this to fit your song.</p>
+
+          <h4>End the way you started</h4>
+          <p>Because the loop repeats, the end of your song leads straight back into its beginning. Try to end the loop similarly to how you started it, using the same notes, chords, or rhythm. This is a big reason the ABA structure works so well: the second A section brings back the opening material, so the jump from the last measure back to the first sounds natural. That way, your loop sounds like one cohesive piece instead of having a noticeable "seam" every time it restarts. </p>
+
+          <h4>Add an intro or outro (optional)</h4>
+          <p>You can also add an intro before your loop or an outro after it. The intro plays once to set the mood before the loop starts, and the outro plays once to give the song a proper ending, for example when the player beats a level. Neither one is required, so focus on making a strong loop first and add these afterwards if you'd like.</p>
         </li>
 
         <li>
@@ -722,7 +814,7 @@
     </section>
 
     <footer>
-      Samuel Grant, Eli Krazner, and LaBron Thompson · ENG 331 · [Semester Year]
+      Samuel Grant, Eli Krazner, and LaBron Thompson · ENG 331 · Fall 2026
     </footer>
 
   </main>
