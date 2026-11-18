@@ -157,7 +157,8 @@
     ol.cards ul li { margin: 3px 0; }
     ol.cards img { max-width: 100%; border-radius: 6px; margin-top: 8px; }
     ol.cards h4 { margin: 0 0 4px; font-size: 1rem; }
-    ol.cards p + h4, ol.cards ul + h4, ol.cards .compare + h4 { margin-top: 18px; }
+    ol.cards p + h4, ol.cards ul + h4, ol.cards ol + h4, ol.cards .compare + h4 { margin-top: 18px; }
+    ol.cards ol li { margin: 3px 0; }
     ol.cards ol, ol.cards ul.options { margin: 4px 0 10px; padding-left: 1.2em; }
 
     /* Examples inside cards: piano-roll pictures and videos */
@@ -519,7 +520,7 @@
                 <figcaption>The background plays a chord that is held for the whole measure.</figcaption>
               </figure>
             </li>
-            <li><strong>Arpeggios</strong> are played using only notes from your key signature's arpeggio.
+            <li><strong>Arpeggios</strong> are played using only notes from your key signature's arpeggio, these are the root note, 3rd note, and 5th note. For example, C major's arpeggio would be C, E, and G.
               <figure>
                 <img src="images/background-arpeggio.png" alt="Piano roll with a background part built from long arpeggio notes under the melody." loading="lazy">
                 <audio controls preload="none" src="audio/background-arpeggio.m4a">Your browser can't play this audio.</audio>
@@ -699,7 +700,7 @@
           <ul class="options">
             <li>If you pick <strong>chords</strong>, the easiest way is to reuse the chords you chose for your melody. Play the chord for the whole measure and repeat this for the entire section. If you don't want to play the entire chord, you can also use just 2 notes from it.</li>
             <li>If you pick <strong>matching notes</strong>, the easiest way is to simply play the first note of the measure for the entire measure. If your song is slower, you can also do half a measure each.</li>
-            <li>If you pick <strong>arpeggios</strong>, you will only ever use notes from your key signature's arpeggio. You should still have one note played for the entire measure.</li>
+            <li>If you pick <strong>arpeggios</strong>, you will only ever use notes from your key signature's arpeggio. As a reminder, these are the root note, 3rd note, and 5th note of your key. You should still have one note played for the entire measure.</li>
           </ul>
           <p>Once you pick one, you can start adding it to your song. As a general rule of thumb, the background section should sit between your melody and bass line in terms of pitch. Usually, there will be 2 octaves between the bass line and the melody. If there isn't an octave gap, try to keep the background elements around octaves 3 and 4.</p>
           <div class="instruments"><strong>Instrument choices:</strong> [Pick your background instruments]</div>
@@ -765,29 +766,46 @@
       <ol class="cards bulleted">
         <li>
           <h3>Percussion in Music</h3>
-          <ul>
-            <li>[What percussion adds: rhythm, energy, and drive]</li>
-            <li>[Basic drum parts: kick, snare, hi-hat]</li>
-            <li>[Simple beginner beat patterns]</li>
+          <p>Percussion is also commonly used in video game music. These can include drums, claps, and other random sound effects.</p>
+          <p>Percussion is mainly used in 2 ways:</p>
+          <ul class="options">
+            <li><strong>Bass Line:</strong> percussion can keep the rhythm of your song. It works like a repeated-note bass line, but with more complex rhythmic patterns. Repeating the same percussion sound can get annoying, so mix up the sounds you use, especially with drums.</li>
+            <li><strong>Flair:</strong> percussion can also build up or supplement the melody. For example, when switching from a less intense to a more intense section of your song, you can make percussion progressively get faster and louder during the last few notes before that section starts. You can also have your percussion section hit in sync with your melody at certain points to make those notes stand out more.</li>
           </ul>
         </li>
 
         <li>
           <h3>More Complex Use of Volume</h3>
-          <ul>
-            <li>[Dynamics: playing loud vs. soft]</li>
-            <li>[Crescendos and decrescendos to build and release tension]</li>
-            <li>[Balancing instrument volumes in a mix]</li>
+          <p>Beyond individual note volume, many DAWs let you change an entire track's volume over time.</p>
+          <p>This has many uses, but the most impactful are fading out long notes and building up to transitions.</p>
+          <ul class="options">
+            <li><strong>Fading out a note</strong> allows you to make longer notes feel much smoother. This helps because it can sound weird when a song or section ends and loud notes suddenly stop. DAW notes often don’t fade on their own, so changing the track's volume dynamically lets you create smooth fade-outs.</li>
+            <li><strong>Building up volume to a transition</strong> makes it feel much more intense and smooth. It can be awkward to change many parts of your song suddenly. The easiest way to get around this awkwardness is to have certain ‘build up’ parts of your song smoothly get louder as the transition approaches and quieter after it ends. These ‘build-up’ notes should only stop after the transition is over; they should fully fade out by the end of the measure right after the transition.</li>
           </ul>
+          <div class="note tip">
+            <strong>Tip</strong>
+            As a final tip, make sure that none of your instruments get too loud. In a DAW, you can often see how loud each track is. Make sure that no single track is much higher than the rest, and make sure that no tracks start ‘peaking’. DAWs generally show track volume in dB, with 0 dB as the ceiling. If anything hits 0 dB, it’s peaking and needs to be quieter to prevent audio issues.
+          </div>
         </li>
 
         <li>
           <h3>Using Inspiration to Write Songs</h3>
-          <ul>
-            <li>[Learning from songs you like: what makes them work?]</li>
-            <li>[Turning feelings, stories, or places into musical ideas]</li>
-            <li>[Keeping an idea notebook or voice memos]</li>
-          </ul>
+          <p>One of the easiest ways to start a song is to look for inspiration. This is especially helpful for melodies and bass lines but can also apply to other aspects of the song. If you want to use a song as inspiration, the best way is to find a piano-solo version, which you can do by searching “‘song name’ piano solo sheet music.”</p>
+          <p>You can usually find sheet music versions of the song on websites like MuseScore. This will, however, require you to know how to read sheet music. While you can find MIDI files and use those instead, it is much easier to find and read sheet music.</p>
+
+          <h4>Melody + Bass Line Inspiration</h4>
+          <ol>
+            <li>Find a song to work off of, and find its sheet music or MIDI.</li>
+            <li>Recreate the song’s melody and bass line in your DAW. Don’t just copy and paste it, actually recreate it one note at a time. The easiest way to learn why the song works so well is to simply recreate it yourself. Make sure to pay attention while you recreate it, pay attention to the rhythm, note choice, how the melody relates to the bass line, and how the note choice relates to the key signature.</li>
+            <li>Create your own unique part using that creation process as inspiration. This may sound super complex, but it’s surprisingly easy. If you want, you can keep looking back at that other song while you create your own part.</li>
+            <li>Make sure your song is different from its inspiration. Your song can be inspired, but it should be completely distinct. Never copy any part of someone else's song into your own unless it's solely for learning.</li>
+          </ol>
+
+          <h4>Flair + Background Inspiration</h4>
+          <p>These can be much harder to work off of, especially since they generally don’t appear in sheet music. Your best bet is to listen to the song and follow the melody + bassline by ear, rather than by looking at the song.</p>
+
+          <h4>Other Inspiration</h4>
+          <p>For things like structure and key signature, there is no real issue with reusing what has already been done. If you like the way a song is structured, you can just use it. If you don’t know how a song is structured or what key it is in, you can use the method of looking at the sheet music mentioned previously.</p>
         </li>
       </ol>
     </section>
