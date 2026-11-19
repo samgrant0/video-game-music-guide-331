@@ -159,6 +159,7 @@
     ol.cards h4 { margin: 0 0 4px; font-size: 1rem; }
     ol.cards p + h4, ol.cards ul + h4, ol.cards ol + h4, ol.cards .compare + h4 { margin-top: 18px; }
     ol.cards ol li { margin: 3px 0; }
+    ol.cards p.sequence { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92rem; padding-left: 1.2em; }
     ol.cards ol, ol.cards ul.options { margin: 4px 0 10px; padding-left: 1.2em; }
 
     /* Examples inside cards: piano-roll pictures and videos */
@@ -398,12 +399,39 @@
 
         <li>
           <h3>Basic Music Theory</h3>
-          <ul>
-            <li>[Notes, scales, and intervals]</li>
-            <li>[Rhythm basics: beats, measures, and tempo]</li>
-            <li>[Time signatures, e.g. 4/4]</li>
-            <li>[What a chord is and how it is built from a scale]</li>
+          <h4>Absolute Basics</h4>
+          <p>A note is the fundamental unit of music. It is defined by its pitch (how high or low it sounds) and duration (how long it is played).</p>
+
+          <h4>Note Pitch (Vertical Axis of the DAW)</h4>
+          <p>There are 12 distinct note pitches per octave: C, C#, D, D#, E, F, F#, G, G#, A, A#, B</p>
+          <p>A scale is any selection of these 12 note pitches, but most commonly contains only 7. This is why only 7 letters are used to spell the 12 note pitches, so each scale has only one instance of each letter.</p>
+          <p>An interval is the distance between any two note pitches. This underpins much of music theory, since music is largely about relationships between note pitches rather than the pitches themselves. These form the foundations for scales, chords, and chord progressions, which are fundamental to defining the emotional quality of a given piece of music.</p>
+
+          <h4>Note Duration (Horizontal Axis of the DAW)</h4>
+          <p>Beats are akin to the pulse of a song. Tempo is the frequency of the beats, or how fast a song is. Measures are like wrappers for groupings of beats that make it easier to keep track of where you are in the song and also serve to distinguish how the rhythm should be “felt”. Think of how you would dance differently to a waltz vs. a tango and which beats are more important than others.</p>
+          <p>In a DAW, you typically see vertical lines that define each measure and its constituent beats.</p>
+          <p>A quarter note is exactly 1/4 the duration of a standard measure and forms the basis for defining time signatures.</p>
+          <p>A time signature defines how long one beat is and how many beats are in one measure, in the format (number of beats per measure)/(duration of one beat). In the time signature 3/4, for example, there are 3 beats per measure and each beat is one quarter note long.</p>
+          <p>Here are some examples of how each parameter affects one measure at a fixed tempo relative to 3/4:</p>
+          <ul class="options">
+            <li><strong>3/8</strong> has the same number of beats per measure but spans half the time because an eighth note is half as long as a quarter note.</li>
+            <li><strong>6/4</strong> has twice as many beats per measure but spans twice as long because the duration of one beat remains unchanged.</li>
           </ul>
+
+          <h4>How Music is Described</h4>
+          <p class="example-label">Triads</p>
+          <p>Triads are chords consisting of exactly 3 notes within a given scale, skipping one note at a time. Applying this to C Major, the triads would be:</p>
+          <p class="sequence">CEG, DFA, EGB, FAC, GBD, ACE, BDF</p>
+          <p>or generalizing to all major keys:</p>
+          <p class="sequence">I - ii - iii - IV - V - vi - vii°</p>
+          <p>where the numerals correspond to scale degrees and capitalization indicates quality. Lowercase corresponds to minor triads; uppercase corresponds to major triads. The one with the circle is a diminished triad.</p>
+          <p>For our purposes, we will only focus on major and minor triads.</p>
+
+          <p class="example-label">Chord Progressions</p>
+          <p>Chord progressions are a sequence of chords. Much like chords and scales are defined by the intervals between their constituent notes, a chord progression focuses on the relationships between chords. This is one of the most important tools for making a piece of music <em>feel</em> a certain way overall.</p>
+          <p>Think of the chord progression as a sequence of events, where each new event adds context to previous and subsequent events, building a larger, cohesive story arc.</p>
+          <p>These can be written using the numeral notation from the Triads section to produce progressions like so:</p>
+          <p class="sequence">ii - V - I, &nbsp; I - vi - V - iii - V - I</p>
         </li>
 
         <li>
@@ -501,12 +529,99 @@
 
         <li>
           <h3>Melody</h3>
-          <ul>
-            <li>[What a melody is: the main tune people remember and hum]</li>
-            <li>[Writing a melody using notes from your key]</li>
-            <li>[Step-wise motion vs. leaps; repetition and variation]</li>
-            <li>[Fitting the melody over the bass line]</li>
-          </ul>
+          <p>The melody is the main tune of your song. It’s the part people remember and hum after they stop playing.</p>
+          <p>Melodies usually play one note at a time and sit higher than everything else in your song.</p>
+          <p>Melodies are the opposite of bass lines. A bass line repeats a simple pattern, but a melody moves around and changes. Your bass line supports your melody.</p>
+
+          <div class="example-group">
+            <h4>Example from a popular game song: Overworld Theme (Super Mario Bros.)</h4>
+            <figure>
+              <div class="video">
+                <iframe src="https://www.youtube-nocookie.com/embed/iy3qq7zc4EY" title="Overworld Theme from Super Mario Bros." loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <figcaption>Notice how often the melody repeats its main idea. That’s a big part of why it’s so easy to remember. <a href="https://youtu.be/iy3qq7zc4EY">Watch on YouTube</a></figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <h4>Using Notes From Your Key</h4>
+            <p>Your melody should only use notes from your key signature. In C major, these are C, D, E, F, G, A, and B.</p>
+            <p>Notes outside your key (like F# in C major) usually sound wrong, so skip them for now.</p>
+            <div class="note tip">
+              <strong>Tip</strong>
+              Many DAWs can highlight the notes in your key on the piano roll. This makes it much harder to pick a wrong note!
+            </div>
+            <p style="margin-top:10px">The root note of your key (C in C major) is “home.” Ending your melody on it makes it sound finished.</p>
+            <p class="example-label">Example</p>
+            <ul class="options">
+              <li>C - E - G - E - D - C - D - E (sounds unfinished)</li>
+              <li>C - E - G - E - D - E - D - C (sounds finished)</li>
+            </ul>
+          </div>
+
+          <div class="example-group">
+            <h4>Steps and Leaps</h4>
+            <p>A step moves to the next note in the scale, like C to D. Steps sound smooth.</p>
+            <p>A leap jumps over at least one note, like C to G. Leaps sound exciting, but too many sound random.</p>
+            <p>Use mostly steps, with a few leaps for emphasis. After a big leap, step back the other way.</p>
+            <p class="example-label">Example</p>
+            <ul class="options">
+              <li>Steps only: C - D - E - F - E - D - C</li>
+              <li>With a leap: C - D - E - high C - B - A - G</li>
+            </ul>
+          </div>
+
+          <div class="example-group">
+            <h4>Repetition and Variation</h4>
+            <p>Repetition makes a melody catchy. Variation keeps it from getting boring.</p>
+            <p>An easy way to get both is to write a short idea, called a motif. Then repeat it, change it a little, and end back home.</p>
+            <p class="example-label">Example</p>
+            <ul class="options">
+              <li>Measure 1: C - E - G - G (the motif)</li>
+              <li>Measure 2: C - E - G - G (repeat)</li>
+              <li>Measure 3: C - E - A - G (small change)</li>
+              <li>Measure 4: E - D - C (back home)</li>
+            </ul>
+          </div>
+
+          <p class="example-label" style="margin-top:18px">Melody Examples</p>
+          <p>Here is a melody written over each of the 4 bass line types from the Bass Line section:</p>
+
+          <div class="example-group">
+            <h4>Up down loop bass line melody</h4>
+            <figure>
+              <img src="images/melody-updown.png" alt="Piano roll of a melody played over an up/down loop bass line." loading="lazy">
+              <audio controls preload="none" src="audio/melody-updown.mp3">Your browser can't play this audio.</audio>
+              <figcaption>A melody over the up/down loop bass line.</figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <h4>Repeat note bass line melody</h4>
+            <figure>
+              <img src="images/melody-repeat.png" alt="Piano roll of a melody played over a repeat-note bass line." loading="lazy">
+              <audio controls preload="none" src="audio/melody-repeat.mp3">Your browser can't play this audio.</audio>
+              <figcaption>A melody over the repeat-note bass line.</figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <h4>Complex bass line melody</h4>
+            <figure>
+              <img src="images/melody-complex.png" alt="Piano roll of a melody played over a complex bass line." loading="lazy">
+              <audio controls preload="none" src="audio/bass-complex.mp3">Your browser can't play this audio.</audio>
+              <figcaption>A melody over the complex bass line.</figcaption>
+            </figure>
+          </div>
+
+          <div class="example-group">
+            <h4>Melody Conv. bass line melody</h4>
+            <figure>
+              <img src="images/melody-melody-conversion.png" alt="Piano roll of a melody played over a melody-conversion bass line." loading="lazy">
+              <audio controls preload="none" src="audio/melody-melody-conversion.mp3">Your browser can't play this audio.</audio>
+              <figcaption>A melody over the melody-conversion bass line.</figcaption>
+            </figure>
+          </div>
         </li>
 
         <li>
@@ -690,8 +805,52 @@
 
         <li>
           <h3>Create a melody for section A</h3>
-          <p>[Write a melody over your bass line using notes from your key.]</p>
-          <div class="instruments"><strong>Instrument choices:</strong> [Pick your melody instrument]</div>
+          <p>The part of the song you will make now is the melody. You’ll build it right on top of your bass line.</p>
+          <ol>
+            <li><strong>Step 1:</strong> Look at the bass note at the start of each measure.</li>
+            <li><strong>Step 2:</strong> On beats 1 and 3, use a note from that bass note’s chord. The chord is the bass note plus the notes a 3rd and a 5th above it, just like an arpeggio.</li>
+            <li><strong>Step 3:</strong> On the other beats, use any note from your key.</li>
+            <li><strong>Step 4:</strong> If a note clashes with the bass, move it up or down one step.</li>
+          </ol>
+          <p class="example-label">Example (C major)</p>
+          <ul class="options">
+            <li>Bass line: C, F, G, C (one note per measure)</li>
+            <li>Melody: start measure 1 on E (from C-E-G), measure 2 on A (from F-A-C), measure 3 on B or D (from G-B-D), and end on C.</li>
+          </ul>
+          <p>These examples are in C major. If you chose a different key, transpose them the same way you did with your bass line.</p>
+
+          <p class="example-label">Melody over the up/down bass line</p>
+          <figure>
+            <img src="images/melody-updown.png" alt="Piano roll of a melody played over an up/down loop bass line." loading="lazy">
+            <audio controls preload="none" src="audio/melody-updown.mp3">Your browser can't play this audio.</audio>
+            <figcaption>A melody built on top of the up/down bass line.</figcaption>
+          </figure>
+
+          <p class="example-label">Melody over the repeat note bass line</p>
+          <figure>
+            <img src="images/melody-repeat.png" alt="Piano roll of a melody played over a repeat-note bass line." loading="lazy">
+            <audio controls preload="none" src="audio/melody-repeat.mp3">Your browser can't play this audio.</audio>
+            <figcaption>A melody built on top of the repeat-note bass line.</figcaption>
+          </figure>
+
+          <div class="note tip">
+            <strong>Tip</strong>
+            Keep your melody around the 4th and 5th octaves. This keeps it above your bass line and background elements.
+          </div>
+          <div class="note tip">
+            <strong>Tip</strong>
+            When your bass line goes up, try moving your melody down (and vice versa). This helps the two parts stand apart.
+          </div>
+
+          <p style="margin-top:10px">The last part of your melody is picking an instrument.</p>
+          <div class="instruments"><strong>Instrument choices:</strong> Melodies have more freedom than bass lines. Plucky instruments like pianos and guitars work, and so do smooth ones like flutes, violins, and lead synths. Just pick something that sounds different from your bass line.
+            <ul>
+              <li><strong>Square wave synth:</strong> the classic "chiptune" sound from older games. It's bright and cuts through everything else, so it is great for upbeat, retro-style songs.</li>
+              <li><strong>Flute:</strong> soft and airy, which makes it a good fit for calm areas like villages, forests, or title screens.</li>
+              <li><strong>Strings (violin):</strong> smooth and emotional; they work well for sad moments or big, epic boss fights.</li>
+            </ul>
+          </div>
+          <p style="margin-top:10px">That’s it for your melody! Keep it going until this section of the song ends.</p>
         </li>
 
         <li>
@@ -703,7 +862,6 @@
             <li>If you pick <strong>arpeggios</strong>, you will only ever use notes from your key signature's arpeggio. As a reminder, these are the root note, 3rd note, and 5th note of your key. You should still have one note played for the entire measure.</li>
           </ul>
           <p>Once you pick one, you can start adding it to your song. As a general rule of thumb, the background section should sit between your melody and bass line in terms of pitch. Usually, there will be 2 octaves between the bass line and the melody. If there isn't an octave gap, try to keep the background elements around octaves 3 and 4.</p>
-          <div class="instruments"><strong>Instrument choices:</strong> [Pick your background instruments]</div>
         </li>
 
         <li>
@@ -732,7 +890,6 @@
           </figure>
 
           <p>For your song, try adding both of these throughout. If you can't get them to sound good, don't include them. You don't need to force them into the song if they don't work. Also, don't try to use them everywhere; use them only in certain sections, or even only specific parts of certain sections.</p>
-          <div class="instruments"><strong>Instrument choices:</strong> [Pick your flair instruments]</div>
         </li>
 
         <li>
